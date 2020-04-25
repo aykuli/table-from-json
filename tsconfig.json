@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "module": "commonjs", // As we're using Node.js and import our NPM packages the CommonJS way, we want to make sure this option is set to commonjs
+    "target": "es6", // ECMA script target
+    "jsx": "react", // The preserve option would normally make sure the JSX code wouldn't be compiled.
+    "lib": ["dom", "esnext"], // The lib option will tell TypeScript which libraries to support.
+    "strict": true, // This option enables a bunch of strict type-checking options like noImplitAny, noImplicitThis and strictFunctionTypes.
+    "esModuleInterop": true,
+    "noUnusedLocals": false, // Both of these options are mainly used to keep proper compatibility with Babel.
+    "noImplicitAny": true,
+    "resolveJsonModule": true // With --resolveJsonModule enabled, we no longer get a type error in our TypeScript file. Even better, we now get type checking and autocompletion!
+  },
+  "exclude": ["node_modules", "public", ".cache"]
+}

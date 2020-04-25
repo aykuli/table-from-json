@@ -1,0 +1,63 @@
+{
+  "name": "songbird",
+  "version": "1.0.0",
+  "description": "RollingScopes School 3 stage course react 2020q1",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --env.mode=development",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aykuli/songbird.git"
+  },
+  "keywords": [],
+  "author": "Aynur Shauerman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aykuli/songbird/issues"
+  },
+  "homepage": "https://github.com/aykuli/songbird#readme",
+  "dependencies": {
+    "eslint-loader": "^3.0.3",
+    "mini-css-extract-plugin": "^0.9.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
