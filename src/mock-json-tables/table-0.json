@@ -1,0 +1,20 @@
+{
+  "Name": "Table0",
+  "Children": [
+    {
+      "VerticalSpan": 1,
+      "Color": "Orange",
+      "Value": "1"
+    },
+    {
+      "VerticalSpan": 1,
+      "Color": "Green",
+      "Value": "2"
+    },
+    {
+      "VerticalSpan": 1,
+      "Color": "Red",
+      "Value": "3"
+    }
+  ]
+}
