@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const env = process.env.MODE;
-const React = require('react');
 
-module.exports = (env = {}) => {
+const { env } = process;
+
+module.exports = () => {
   const { mode = 'development' } = env;
   const isProd = mode === 'production';
   const isDev = mode === 'development';
@@ -31,9 +31,9 @@ module.exports = (env = {}) => {
 
   return {
     mode: isProd ? 'production' : isDev && 'development',
-    devtool: "source-map",
+    devtool: 'source-map',
 
-    entry: './src/index.tsx',
+    entry: './src/index.jsx',
 
     output: {
       filename: isProd ? 'main-[hash:8].js' : undefined
@@ -42,19 +42,15 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: [
-            {
-              loader: "ts-loader"
-            }
-        ]
+          loader: ['babel-loader', 'eslint-loader']
         },
         // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
         {
-          enforce: "pre",
+          enforce: 'pre',
           test: /\.js$/,
-          loader: "source-map-loader"
+          loader: 'source-map-loader'
         },
         {
           test: /\.(png|gif|ico|jpeg|jpg|mp3)$/,
@@ -91,7 +87,7 @@ module.exports = (env = {}) => {
       ]
     },
     resolve: {
-      extensions: ['.js', '.ts', '.tsx']
+      extensions: ['.js', '.jsx']
     },
     plugins: getPlugins(),
     devServer: {
