@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 
 import table1 from '../mock-json-tables/table-1.json';
 import table0 from '../mock-json-tables/table-0.json';
-import tableLevelsMap from '../utils/table-levels-map';
+import tableLevelsMapping from '../utils/table-levels-map';
 
 import './Table.scss';
 import SPAN_WIDTH from '../constantas';
 
+const tableLevelsMap = tableLevelsMapping(table1);
 console.log('tableLevelsMap: ', tableLevelsMap);
 
 const Tree = props => {

@@ -10,7 +10,14 @@
           "VerticalSpan": 1,
           "Color": "Green",
           "Value": "4",
-          "Children": [{ "VerticalSpan": 1, "Color": "Purple", "Value": "7", "Children": [] }]
+          "Children": [
+            {
+              "VerticalSpan": 1,
+              "Color": "Purple",
+              "Value": "7",
+              "Children": [{ "VerticalSpan": 1, "Color": "Red", "Value": "7", "Children": [] }]
+            }
+          ]
         },
         {
           "VerticalSpan": 1,
