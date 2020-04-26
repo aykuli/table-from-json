@@ -1,13 +1,26 @@
+.table {
+  display: inline-flex;
+
+  font-size: 2rem;
+  line-height: 50px;
+  text-align: center;
+}
+
 .span {
   &__parent {
-    // display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+
     min-width: 50px;
     min-height: 50px;
+  }
 
-    font-size: 2rem;
-    text-align: center;
-    line-height: 50px;
+  &__child {
+    display: flex;
+    justify-content: center;
 
-    border: 1px solid #000;
+    min-width: 50px;
+    min-height: 50px;
   }
 }

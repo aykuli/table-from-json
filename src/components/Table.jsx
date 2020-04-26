@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Fragment } from 'react';
-import PropTypes, { array } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import table1 from '../mock-json-tables/table-1.json';
 import table0 from '../mock-json-tables/table-0.json';
@@ -18,17 +18,23 @@ const Tree = props => {
     <>
       {items.map(item => {
         const isChildrenExist = item.Children.length ? 1 : 0;
-        const len = isChildrenExist ? item.Children.length * SPAN_WIDTH : SPAN_WIDTH;
-        const display = isChildrenExist && item.Children.length > 1 ? 'block' : 'inline-block';
-        const childClass = isChildrenExist ? 'span__parent span__child' : 'span__child';
+        const childClass = isChildrenExist ? 'span__parent' : 'span__child';
 
-        return (
-          <div className={childClass} key={item.Value}>
-            <div className="span__child">{item.Value}</div>
-            <div className={childClass} style={{ backgroundColor: item.Color, width: `${len}px` }}>
+        console.log('\nValue: ', item.Value);
+        console.log('color: ', item.Color);
+        console.log('children: ', item.Children);
+        console.log('isChildrenExist: ', isChildrenExist);
+        return isChildrenExist ? (
+          <div className="span__parent" key={item.Value}>
+            <div className="span__child" style={{ backgroundColor: item.Color, border: '1px solid black' }}>
+              {item.Value}
+            </div>
+            <div className="span__child">
               <Tree items={item.Children} />
             </div>
           </div>
+        ) : (
+          <div style={{ backgroundColor: item.Color, width: SPAN_WIDTH, border: '1px solid black' }}>{item.Value}</div>
         );
       })}
     </>
@@ -54,7 +60,7 @@ export default () => {
   return (
     <>
       <h1>{title}</h1>
-      <div style={{ display: 'inline-flex', border: '1px solid #000', flexGrow: 0 }}>
+      <div className="table">
         <Tree items={Array.from(table1.Children)} />
       </div>
     </>
