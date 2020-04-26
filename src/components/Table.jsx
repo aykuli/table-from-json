@@ -17,17 +17,18 @@ const Tree = props => {
   return (
     <>
       {items.map(item => {
-        const isChildrenExist = item.Children ? 1 : 0;
+        const isChildrenExist = item.Children.length ? 1 : 0;
         const len = isChildrenExist ? item.Children.length * SPAN_WIDTH : SPAN_WIDTH;
         const display = isChildrenExist && item.Children.length > 1 ? 'block' : 'inline-block';
+        const childClass = isChildrenExist ? 'span__parent span__child' : 'span__child';
 
         return (
-          <Fragment key={item.Value}>
-            <span className="span-1" style={{ backgroundColor: item.Color, width: `${len}px`, display }}>
-              {item.Value}
-            </span>
-            <Tree items={item.Children} />
-          </Fragment>
+          <div className={childClass} key={item.Value}>
+            <div className="span__child">{item.Value}</div>
+            <div className={childClass} style={{ backgroundColor: item.Color, width: `${len}px` }}>
+              <Tree items={item.Children} />
+            </div>
+          </div>
         );
       })}
     </>
@@ -53,7 +54,9 @@ export default () => {
   return (
     <>
       <h1>{title}</h1>
-      <Tree items={Array.from(table0.Children)} />
+      <div style={{ display: 'inline-flex', border: '1px solid #000', flexGrow: 0 }}>
+        <Tree items={Array.from(table1.Children)} />
+      </div>
     </>
   );
 };
