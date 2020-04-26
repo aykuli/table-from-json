@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 
 import table1 from '../mock-json-tables/table-1.json';
 import table0 from '../mock-json-tables/table-0.json';
+import tableLevelsMap from '../utils/table-levels-map';
 
 import './Table.scss';
 import SPAN_WIDTH from '../constantas';
+
+console.log('tableLevelsMap: ', tableLevelsMap);
 
 const Tree = props => {
   const { items } = props;
@@ -18,12 +21,7 @@ const Tree = props => {
     <>
       {items.map(item => {
         const isChildrenExist = item.Children.length ? 1 : 0;
-        const childClass = isChildrenExist ? 'span__parent' : 'span__child';
 
-        console.log('\nValue: ', item.Value);
-        console.log('color: ', item.Color);
-        console.log('children: ', item.Children);
-        console.log('isChildrenExist: ', isChildrenExist);
         return isChildrenExist ? (
           <div className="span__parent" key={item.Value}>
             <div className="span__child" style={{ backgroundColor: item.Color, border: '1px solid black' }}>
@@ -34,7 +32,9 @@ const Tree = props => {
             </div>
           </div>
         ) : (
-          <div style={{ backgroundColor: item.Color, width: SPAN_WIDTH, border: '1px solid black' }}>{item.Value}</div>
+          <div key={item.Value} style={{ backgroundColor: item.Color, width: SPAN_WIDTH, border: '1px solid black' }}>
+            {item.Value}
+          </div>
         );
       })}
     </>
