@@ -1,0 +1,13 @@
+.cell {
+  width: 50px;
+  height: 25px;
+
+  font-size: 1rem;
+  line-height: 25px;
+
+  border: 1px solid rgb(169, 179, 176);
+
+  &:focus {
+    border: 1px solid black;
+  }
+}

@@ -1,2 +1,2 @@
-const SPAN_WIDTH = 50;
-export default SPAN_WIDTH;
+export const SPAN_WIDTH = 50;
+export const SPAN_HEIGHT = 50;

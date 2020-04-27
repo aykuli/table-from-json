@@ -3,6 +3,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+// import table1 from '../mock-json-tables/table-wrong-0.json';
 import table1 from '../mock-json-tables/table-1.json';
 // import table0 from '../mock-json-tables/table-0.json';
 import tableLevelsMapping from '../utils/table-levels-map-1';
@@ -11,12 +12,10 @@ import './Table.scss';
 import SPAN_WIDTH from '../constantas';
 
 const tableLevelsMap = tableLevelsMapping(table1);
-console.log('tableLevelsMap: ', tableLevelsMap);
+console.log(tableLevelsMap);
 
 const Tree = props => {
   const { items, level } = props;
-  console.log('\n', level);
-  console.log('items: ', items);
 
   if (!items || typeof items !== 'object') return null;
 
@@ -25,9 +24,6 @@ const Tree = props => {
       {items.map((item, index) => {
         const { Color, Value, Children } = item;
         const isChildrenExist = Children.length ? 1 : 0;
-        console.log('item.Color: ', Color);
-        console.log('item.Children: ', Children);
-        console.log('index: ', index);
 
         const nextColor = Children.length ? Children[0].Color : null;
 
@@ -35,14 +31,10 @@ const Tree = props => {
           nextColor && tableLevelsMap.get(nextColor) !== tableLevelsMap.get(Color) + 1
             ? `${SPAN_WIDTH * 2}px`
             : `${SPAN_WIDTH}px`;
-        console.log(height);
 
         return isChildrenExist ? (
           <div className="span__parent" key={Value}>
-            <div
-              className="span__child"
-              style={{ backgroundColor: Color, border: '1px solid black', color: 'red', height }}
-            >
+            <div className="span__child" style={{ backgroundColor: Color, border: '1px solid black', height }}>
               {Value}
             </div>
             <div className="span__child" style={{ flexGrow: 1 }}>
@@ -50,7 +42,7 @@ const Tree = props => {
             </div>
           </div>
         ) : (
-          <div key={Value} style={{ backgroundColor: Color, width: SPAN_WIDTH, border: '1px solid black' }}>
+          <div key={Value} style={{ backgroundColor: Color, width: SPAN_WIDTH }} className="span__last">
             {Value}
             {console.log('render last')}
           </div>
