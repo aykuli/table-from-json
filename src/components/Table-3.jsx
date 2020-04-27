@@ -30,19 +30,15 @@ const Tree = props => {
         console.log('index: ', index);
 
         const nextColor = Children.length ? Children[0].Color : null;
+        console.log(nextColor);
 
-        const height =
-          nextColor && tableLevelsMap.get(nextColor) !== tableLevelsMap.get(Color) + 1
-            ? `${SPAN_WIDTH * 2}px`
-            : `${SPAN_WIDTH}px`;
-        console.log(height);
+        if (nextColor && tableLevelsMap.get(nextColor) === tableLevelsMap(Color) + 1) {
+          console.log('следующий цвет совпадает');
+        }
 
         return isChildrenExist ? (
           <div className="span__parent" key={Value}>
-            <div
-              className="span__child"
-              style={{ backgroundColor: Color, border: '1px solid black', color: 'red', height }}
-            >
+            <div className="span__child" style={{ backgroundColor: Color, border: '1px solid black' }}>
               {Value}
             </div>
             <div className="span__child" style={{ flexGrow: 1 }}>
