@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Table from './Table';
 
-export default () => {
+const App = () => {
   return (
     <>
       <button type="button" onClick={() => console.log('undo')}>
@@ -15,3 +16,9 @@ export default () => {
     </>
   );
 };
+
+const mapStateToProps = ({ history }) => ({ history });
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

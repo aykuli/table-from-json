@@ -1,22 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Tree from './Tree';
 
-import table1 from '../mock-json-tables/table-1.json';
-
 import './Table.scss';
-import { tableWithIds } from '../utils/table-cells-map';
 
-const tableToDraw = tableWithIds(table1);
-
-export default () => {
-  const title = tableToDraw.Name;
+const Table = props => {
+  const { tableJSON } = props;
+  const title = tableJSON.Name;
   return (
     <>
       <h1>{title}</h1>
       <div className="table">
-        <Tree items={Array.from(tableToDraw.Children)} level={0} />
+        <Tree items={Array.from(tableJSON.Children)} level={0} />
       </div>
     </>
   );
 };
+
+Table.defaultProps = {
+  tableJSON: {}
+};
+
+Table.propTypes = {
+  tableJSON: PropTypes.shape({
+    Name: PropTypes.string,
+    Children: PropTypes.arrayOf(PropTypes.any)
+  })
+};
+
+const mapStateToProps = ({ tableJSON }) => ({ tableJSON });
+
+export default connect(mapStateToProps, null)(Table);

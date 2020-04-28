@@ -17,6 +17,12 @@ const CellInput = ({ className, backgroundColor, width, height, value, numberOfC
         style={{ backgroundColor, height, width, minHeight: SPAN_HEIGHT }}
         onChange={e => handleChange(e, numberOfCell)}
         onBlur={e => handleBlur(e, numberOfCell)}
+        onKeyPress={e => {
+          // проверка нажата ли кнопка ентер
+          // if enter pressed -> save in history changes
+          console.log('e.keyCode: ', e.key);
+          console.log(value);
+        }}
         tabIndex={0}
         value={value}
       />
