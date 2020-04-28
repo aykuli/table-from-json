@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CellInput from './CellInput';
 
 import './Table.scss';
-import { SPAN_WIDTH, SPAN_HEIGHT } from '../constantas';
+import { SPAN_WIDTH, SPAN_HEIGHT, SPAN_PADDING } from '../constantas';
 
 const Tree = props => {
   const { items, level } = props;
@@ -25,6 +25,12 @@ const Tree = props => {
     setTable(newTable);
   };
 
+  const handleBlur = (e, numberOfCell) => {
+    console.log('blur: ', numberOfCell);
+
+    console.log(e.target.value);
+  };
+
   return (
     <>
       {table.map(item => {
@@ -41,10 +47,11 @@ const Tree = props => {
               className="span__child"
               backgroundColor={Color}
               height={`${height}px`}
-              width={width}
+              width={width - SPAN_PADDING * 2}
               value={Value}
               numberOfCell={numberOfCell}
               handleChange={handleChange}
+              handleBlur={handleBlur}
             />
             <div className="span__child" style={{ flexGrow: 1 }}>
               <Tree items={Children} level={level + 1} />
@@ -56,10 +63,11 @@ const Tree = props => {
             className="span__last"
             backgroundColor={Color}
             height="100%"
-            width={SPAN_WIDTH}
+            width={SPAN_WIDTH - SPAN_PADDING * 2}
             value={Value}
             numberOfCell={numberOfCell}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         );
       })}

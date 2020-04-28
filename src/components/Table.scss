@@ -2,7 +2,6 @@
   display: inline-flex;
 
   line-height: 40px;
-  text-align: center;
   color: #000;
 }
 
@@ -23,8 +22,7 @@
     padding: 0;
     margin: 0;
 
-    font-size: 2rem;
-    text-align: center;
+    font-size: 1rem;
     color: #000;
 
     outline: 1px solid black;
@@ -39,11 +37,21 @@
     padding: 0;
     margin: 0;
 
-    font-size: 2rem;
-    text-align: center;
+    font-size: 1rem;
     color: #000;
 
     outline: 1px solid black;
     border: none;
+  }
+}
+
+input {
+  &.span {
+    &__child,
+    &__last {
+      padding: 5px;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
   }
 }

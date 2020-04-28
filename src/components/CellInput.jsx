@@ -9,18 +9,20 @@ import table1 from '../mock-json-tables/table-1.json';
 import './Table.scss';
 import { SPAN_WIDTH, SPAN_HEIGHT } from '../constantas';
 
-const CellInput = ({ className, backgroundColor, width, height, value, numberOfCell, handleChange }) => (
-  <>
-    <input
-      key={numberOfCell}
-      className={className}
-      style={{ backgroundColor, height, width, minHeight: SPAN_HEIGHT }}
-      onChange={e => handleChange(e, numberOfCell)}
-      tabIndex={0}
-      value={value}
-    />
-  </>
-);
+const CellInput = ({ className, backgroundColor, width, height, value, numberOfCell, handleChange, handleBlur }) => {
+  return (
+    <>
+      <input
+        className={className}
+        style={{ backgroundColor, height, width, minHeight: SPAN_HEIGHT }}
+        onChange={e => handleChange(e, numberOfCell)}
+        onBlur={e => handleBlur(e, numberOfCell)}
+        tabIndex={0}
+        value={value}
+      />
+    </>
+  );
+};
 
 CellInput.defaultProps = {
   className: '',
@@ -29,7 +31,8 @@ CellInput.defaultProps = {
   height: `${SPAN_HEIGHT}px`,
   value: '',
   numberOfCell: 0,
-  handleChange: () => {}
+  handleChange: () => {},
+  handleBlur: () => {}
 };
 
 CellInput.propTypes = {
@@ -39,7 +42,8 @@ CellInput.propTypes = {
   height: PropTypes.string,
   value: PropTypes.string,
   numberOfCell: PropTypes.number,
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  handleBlur: PropTypes.func
 };
 
 export default memo(CellInput);
