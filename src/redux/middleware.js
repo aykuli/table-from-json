@@ -1,1 +1,7 @@
-export default () => next => action => next(action);
+export default () => {
+  return next => {
+    return action => {
+      return next(action);
+    };
+  };
+};

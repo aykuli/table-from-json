@@ -1,11 +1,19 @@
 import { UNDO, REDO, ADD_NEW_RECORD_TO_HISTORY, GET_PREV_HISTORY } from './action-types';
 
 import table from '../mock-json-tables/table-1.json';
-import { tableWithIds } from '../utils/table-cells-map';
+import { tableWithIds, tableChecking } from '../utils/table-cells-map';
+
+const tableJSON = tableWithIds(table);
+const warningMessages = tableChecking(tableJSON);
+
+console.log('reducer');
+console.log('warningMessages: ', warningMessages);
 
 const initialState = {
   history: [],
-  tableJSON: tableWithIds(table)
+  tableJSON,
+  isTableValid: true,
+  checkMessage: ''
 };
 
 const reducer = (state = initialState, action) => {

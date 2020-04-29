@@ -8,6 +8,7 @@ import store from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>
+    {console.log(store.getState())}
     <App />
   </Provider>,
   document.getElementById('root')

@@ -23,7 +23,6 @@ const Tree = props => {
       return item;
     });
     setTable(newTable);
-    // проверка нажата ли кнопка ентер
   };
 
   const handleBlur = (e, numberOfCell) => {
